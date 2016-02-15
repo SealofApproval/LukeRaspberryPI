@@ -1,6 +1,7 @@
 import smtplib
 import RPi.GPIO as GPIO
 import time
+import array
 
 def sendEmail():
 	smtpUser = 'lukeraspberrypi@gmail.com'
@@ -9,7 +10,7 @@ def sendEmail():
 	toAdd = '6789204057@vtext.com'
 	fromAdd = smtpUser
 
-	subject = 'Subject Message'
+	subject = ''
 	header = 'To: ' + toAdd + '\n' + 'From: ' + '\n' + 'Subject: ' + subject
 	body = 'The door has been opened'
 
@@ -30,6 +31,8 @@ GPIO.setup(buttonPin, GPIO.IN)
 
 
 while True:
-	input = GPIO.input(buttonPin)
-	if(not(GPIO.input(buttonPin))):
-		sendEmail()
+	timeArray = time.localtime()
+	if(timeArray[3] != 8):
+		input = GPIO.input(buttonPin)
+		if(not(GPIO.input(buttonPin))):
+			sendEmail()
