@@ -1,5 +1,5 @@
 import smtplib
-import Rpi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import time
 
 def sendEmail():
@@ -14,7 +14,7 @@ def sendEmail():
 	body = 'The door has been opened'
 
 	s = smtplib.SMTP('smtp.gmail.com', 587)
-	
+
 	s.ehlo()
 	s.starttls()
 	s.ehlo()
@@ -29,7 +29,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(buttonPin, GPIO.IN)
 
 
-while true:
+while True:
 	input = GPIO.input(buttonPin)
 	if(not(GPIO.input(buttonPin))):
 		sendEmail()
