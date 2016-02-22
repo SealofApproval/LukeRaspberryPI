@@ -14,7 +14,7 @@ def sendEmail(timeArray):
 
 	subject = ''
 	header = 'To: ' + toAdd + '\n' + 'From: ' + '\n' + 'Subject: ' + subject
-	body = months[timeArray[1]] + " " + timeArray[2] + ", " + timeArray[0] + " at " + timeArray[3] + ":" + timeArray[4] + ":" + timeArray[5] + " - The door was opened"
+	body = months[timeArray[1]] + " " + str(timeArray[2]) + ", " + str(timeArray[0]) + " at " + str(timeArray[3]) + ":" + str(timeArray[4]) + ":" + str(timeArray[5]) + " - The door was opened"
 
 	s = smtplib.SMTP('smtp.gmail.com', 587)
 
