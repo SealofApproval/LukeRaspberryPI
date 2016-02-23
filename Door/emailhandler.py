@@ -42,5 +42,6 @@ try:
 				sendEmail(timeArray)
 				print(months[timeArray[1]] + " " + str(timeArray[2]) + ", " + str(timeArray[0]) + " at " + str(timeArray[3]) + ":" + str(timeArray[4]) + ":" + str(timeArray[5]) + " - The door was opened")
 				file.write(months[timeArray[1]] + " " + str(timeArray[2]) + ", " + str(timeArray[0]) + " at " + str(timeArray[3]) + ":" + str(timeArray[4]) + ":" + str(timeArray[5]) + " - The door was opened\n")
+				time.sleep(60)
 except KeyboardInterrupt:
 	file.close()
