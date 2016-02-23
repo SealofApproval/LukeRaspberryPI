@@ -14,7 +14,7 @@ def sendEmail(timeArray):
 
 	subject = ''
 	header = 'To: ' + toAdd + '\n' + 'From: ' + '\n' + 'Subject: ' + subject
-	body = months[timeArray[1]] + " " + str(timeArray[2]) + ", " + str(timeArray[0]) + " at " + str(timeArray[3]) + ":" + str(timeArray[4]) + ":" + str(timeArray[5]) + " - The door was opened"
+	body = months[timeArray[1]] + " " + str(timeArray[2]) + ", " + str(timeArray[0]) + " at " + str(timeArray[3].zfill(2)) + ":" + str(timeArray[4].zfill(2)) + ":" + str(timeArray[5].zfill(2)) + " - The door was opened"
 
 	s = smtplib.SMTP('smtp.gmail.com', 587)
 
@@ -39,7 +39,10 @@ try:
 		if(timeArray[3] != 8):
 			input = GPIO.input(buttonPin)
 			if(not(GPIO.input(buttonPin))):
-				sendEmail(timeArray)
+				try:
+					sendEmail(timeArray)
+				except:
+					print("Error on sending - no email sent.")
 				print(months[timeArray[1]] + " " + str(timeArray[2]) + ", " + str(timeArray[0]) + " at " + str(timeArray[3]) + ":" + str(timeArray[4]) + ":" + str(timeArray[5]) + " - The door was opened")
 				file.write(months[timeArray[1]] + " " + str(timeArray[2]) + ", " + str(timeArray[0]) + " at " + str(timeArray[3]) + ":" + str(timeArray[4]) + ":" + str(timeArray[5]) + " - The door was opened\n")
 except KeyboardInterrupt:
